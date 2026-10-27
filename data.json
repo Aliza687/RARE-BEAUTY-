@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Eye Palette",
+    "price": 28.00,
+    "image": "assets/p1.png",
+    "shelf": "top"
+  },
+  {
+    "id": 2,
+    "name": "Nourishing Lip Gloss",
+    "price": 20.00,
+    "image": "assets/p2.png",
+    "shelf": "top"
+  },
+  {
+    "id": 3,
+    "name": "Seccond Skin Foundation",
+    "price": 30.00,
+    "image": "assets/p3.png",
+    "shelf": "top"
+  },
+  {
+    "id": 4,
+    "name": "Face Wash Cleanser",
+    "price": 18.00,
+    "image": "assets/p4.png",
+    "shelf": "bottom"
+  },
+  {
+    "id": 5,
+    "name": "Silky Highlighter",
+    "price": 25.00,
+    "image": "assets/p5.png",
+    "shelf": "bottom"
+  },
+  {
+    "id": 6,
+    "name": "Precision Eye Liner",
+    "price": 19.00,
+    "image": "assets/p6.png",
+    "shelf": "bottom"
+  }
+]

@@ -1,0 +1,20 @@
+:root {
+    /* Soft Nude & Rose Gold Color Palette */
+    --primary-color: #C88A75;        /* Soft Rose Gold */
+    --primary-hover: #A86B57;        /* Deep Rose Gold for Hovers */
+    --primary-light: #F4ECE8;        /* Soft Blush Tint */
+    
+    --bg-light: #FAFAF7;             /* Warm Ivory Background */
+    --bg-white: #FFFFFF;             /* Pure White Cards */
+    --bg-footer: #221D1B;            /* Muted Espresso Footer */
+
+    --text-dark: #2A2A2A;            /* Deep Charcoal Text */
+    --text-muted: #7A726E;           /* Soft Muted Text */
+    --border-color: #E8E2DD;         /* Subtle Border */
+
+    --card-shadow: 0 10px 25px rgba(200, 138, 117, 0.08);
+    --border-radius: 12px;
+
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Poppins', sans-serif;
+}

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rare Beauty | Celebrate Your Individuality</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="RB Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="brand-text">RARE <span>BEAUTY</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#" class="icon-link"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="javascript:void(0)" class="icon-link cart-icon" id="open-cart-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content reveal">
+                <span class="sub-title">✨ Define Beauty On Your Own Terms</span>
+                <h1>Be Your Rare, Your Beauty, Your Rules</h1>
+                <p>Created to celebrate individuality and self-expression with modern, nourishing skincare essentials.</p>
+                <div class="hero-btns">
+                    <a href="products.html" class="btn btn-primary">Shop Collection</a>
+                    <a href="about.html" class="btn btn-secondary">Our Vision</a>
+                </div>
+            </div>
+            <div class="hero-image reveal">
+                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=800" alt="Rare Beauty Skincare">
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Highlights / Feature Cards -->
+    <section class="brand-features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-leaf"></i></div>
+                    <h3 class="feature-title">100% Organic</h3>
+                    <p class="feature-desc">Pure botanical extracts for sensitive skin and natural radiant glow.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-heart"></i></div>
+                    <h3 class="feature-title">Cruelty Free</h3>
+                    <p class="feature-desc">Dermatologically formulated, never tested on animals.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h3 class="feature-title">Free Express Shipping</h3>
+                    <p class="feature-desc">Complimentary door delivery on all orders over $50.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon-wrapper"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="feature-title">Dermatologist Approved</h3>
+                    <p class="feature-desc">Clinically tested and hypoallergenic formulas designed for daily use.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Our Best Sellers</h2>
+                <p>Discover our signature beauty essentials handcrafted for your unique glow.</p>
+            </div>
+            <div class="products-grid" id="featured-grid">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Testimonials / Reviews Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Loved By Real Beauty</h2>
+                <p>See what our community has to say about our formulas.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="rating-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Second Skin Foundation feels so lightweight and natural. It gives my skin a flawless glow all day without feeling cakey!"</p>
+                    <div class="customer-info">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150" alt="Sophia M." class="customer-avatar">
+                        <div class="customer-details">
+                            <h4>Sophia M.</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="rating-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Nourishing Lip Gloss is non-sticky and super hydrating! My lips feel plump and healthy. Absolutely in love with Rare Beauty."</p>
+                    <div class="customer-info">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150" alt="Emma K." class="customer-avatar">
+                        <div class="customer-details">
+                            <h4>Emma K.</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card reveal">
+                    <div class="rating-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"The Eye Palette has incredible pigmentation with almost zero fallout. Plus, knowing it’s 100% cruelty-free makes it even better!"</p>
+                    <div class="customer-info">
+                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=150" alt="Olivia R." class="customer-avatar">
+                        <div class="customer-details">
+                            <h4>Olivia R.</h4>
+                            <span>Verified Buyer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter / Discount Signup Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box reveal">
+                <h2>Get 10% Off Your First Order ✨</h2>
+                <p>Subscribe to our newsletter for exclusive beauty tips, new arrivals, and special VIP discounts.</p>
+                <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Claim 10% Off</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Bag Drawer Panel -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Rare Beauty Bag (<span id="drawer-item-count">0</span>)</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cart-body">
+            <p class="cart-empty-msg">Your shopping bag is empty ✨</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal-price">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal Form -->
+    <div class="checkout-modal-overlay" id="checkout-modal">
+        <div class="checkout-modal">
+            <div class="checkout-header">
+                <h3>Complete Your Order ✨</h3>
+                <button class="close-cart-btn" onclick="closeCheckout()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="checkout-form" onsubmit="handlePlaceOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" placeholder="House/Street no, City" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+92 300 0000000" required>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select required>
+                        <option value="cod">Cash on Delivery (COD)</option>
+                        <option value="card">Credit / Debit Card</option>
+                    </select>
+                </div>
+                <button type="submit" class="place-order-btn">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col reveal">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="assets/logo.png" alt="RB Logo" class="logo-img" style="height: 38px;" onerror="this.style.display='none'">
+                    <span class="brand-text" style="color: #fff;">RARE <span style="color: var(--primary-color);">BEAUTY</span></span>
+                </a>
+                <p>A modern beauty brand created to celebrate individuality, confidence, and timeless beauty.</p>
+            </div>
+            <div class="footer-col reveal">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop All</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col reveal">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rare Beauty. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script -->
+    <script>
+        const productsData = [
+            { id: 1, name: "Eye Palette (Blend. Define. Shine)", category: "Eye Makeup", price: 28.00, image: "assets/p1.png" },
+            { id: 2, name: "Nourishing Lip Gloss", category: "Lips", price: 20.00, image: "assets/p2.png" },
+            { id: 3, name: "Second Skin Foundation (30 ML)", category: "Face", price: 30.00, image: "assets/p3.png" }
+        ];
+
+        let cart = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFeaturedProducts();
+
+            document.getElementById('open-cart-btn').addEventListener('click', toggleCartDrawer);
+            document.getElementById('close-cart-btn').addEventListener('click', toggleCartDrawer);
+            document.getElementById('cart-overlay').addEventListener('click', toggleCartDrawer);
+
+            initScrollReveal();
+        });
+
+        function renderFeaturedProducts() {
+            const grid = document.getElementById('featured-grid');
+            if (grid) {
+                grid.innerHTML = productsData.map(product => `
+                    <div class="product-card reveal">
+                        <img src="${product.image}" alt="${product.name}" class="product-img" onerror="this.src='assets/logo.png'">
+                        <span class="product-category">${product.category}</span>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cart-drawer').classList.toggle('active');
+            document.getElementById('cart-overlay').classList.toggle('active');
+        }
+
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            toggleCartDrawer();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBody = document.getElementById('cart-body');
+            const cartBadge = document.getElementById('cart-badge');
+            const itemCount = document.getElementById('drawer-item-count');
+            const subtotalEl = document.getElementById('cart-subtotal-price');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalItems;
+            itemCount.textContent = totalItems;
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<p class="cart-empty-msg">Your shopping bag is empty ✨</p>';
+            } else {
+                cartBody.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='assets/logo.png'">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-controls">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="item-qty">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn" onclick="removeFromCart(${item.id})">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert("Your bag is empty! Add products first ✨");
+                return;
+            }
+            toggleCartDrawer();
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        function handlePlaceOrder(event) {
+            event.preventDefault();
+            alert("🎉 Order Placed Successfully! Thank you for shopping with Rare Beauty.");
+            cart = [];
+            updateCartUI();
+            closeCheckout();
+        }
+
+        function handleNewsletterSubmit(event) {
+            event.preventDefault();
+            alert("✨ Thank you for subscribing! Use promo code 'RARE10' at checkout to enjoy 10% OFF.");
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>

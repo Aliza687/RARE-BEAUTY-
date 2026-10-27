@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Collection | Rare Beauty</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <style>
+        .featured-products, .hero, .magical-cabinet-section, .filter-container, .products-grid {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-white);
+            color: var(--text-dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(200, 138, 117, 0.2);
+        }
+
+        /* ==========================================
+           50/50 Half-Half Cabinet & Trolley Section
+           ========================================== */
+        .magical-cabinet-section {
+            padding: 3rem 0 4rem 0;
+            background: linear-gradient(135deg, #FAF4F0 0%, #F4ECE8 100%);
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .half-split-container {
+            max-width: 1100px;
+            margin: 2rem auto 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
+        }
+
+        @media (max-width: 900px) {
+            .half-split-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* LEFT HALF: Cabinet Stage & Doors */
+        .cabinet-stage {
+            position: relative;
+            perspective: 1200px;
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+        }
+
+        .cabinet-frame {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 5px solid #E2C9BF;
+            border-radius: 20px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 20px 40px rgba(200, 138, 117, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.9);
+            position: relative;
+            height: 100%;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .cabinet-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            z-index: 30;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #E2C9BF;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .cabinet-close-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: scale(1.1) rotate(90deg);
+        }
+
+        .cabinet-stage.opened .cabinet-close-btn {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cabinet-doors-container {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex !important;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        /* UNIQUE REALISTIC SHAKER STYLE DOORS WITH 3D PANEL & KNOBS */
+        .cabinet-door {
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, #FAF4F0 0%, #F0E2DC 100%);
+            border: 3px solid #D8BCB0;
+            position: relative;
+            transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
+            pointer-events: auto;
+            cursor: pointer;
+            box-shadow: inset 0 2px 5px rgba(255, 255, 255, 0.8), 0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        /* Realistic Recessed Shaker Panel Box Inside Door */
+        .cabinet-door::before {
+            content: '';
+            position: absolute;
+            top: 20px; bottom: 20px; left: 18px; right: 18px;
+            border: 2px solid #C88A75;
+            border-radius: 8px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(245, 235, 230, 0.9));
+            box-shadow: inset 0 4px 8px rgba(200, 138, 117, 0.2), 0 1px 3px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+        }
+
+        /* Realistic Metallic Door Knobs (Handles) */
+        .door-left::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle at 30% 30%, #fff, #C88A75 70%, #8A5442);
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+        }
+
+        .door-right::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle at 30% 30%, #fff, #C88A75 70%, #8A5442);
+            border-radius: 50%;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+        }
+
+        .door-left {
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+            transform-origin: left;
+            border-right: 1.5px solid #C88A75;
+        }
+
+        .door-right {
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+            transform-origin: right;
+            border-left: 1.5px solid #C88A75;
+        }
+
+        .cabinet-open-trigger {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.85rem 1.8rem;
+            border-radius: 30px;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(200, 138, 117, 0.45);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cabinet-open-trigger:hover {
+            transform: translate(-50%, -50%) scale(1.08);
+            background: var(--primary-hover);
+        }
+
+        .cabinet-open-trigger i {
+            animation: bounceIcon 1.5s infinite;
+        }
+
+        @keyframes bounceIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .cabinet-stage.opened .door-left {
+            transform: rotateY(-110deg);
+        }
+
+        .cabinet-stage.opened .door-right {
+            transform: rotateY(110deg);
+        }
+
+        .cabinet-stage.opened .cabinet-open-trigger {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .cabinet-stage.opened .cabinet-doors-container {
+            pointer-events: none;
+        }
+
+        .cabinet-shelves-content {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+            pointer-events: none;
+        }
+
+        .cabinet-stage.opened .cabinet-shelves-content {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .cabinet-shelf-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding: 0.4rem 0.5rem 0.2rem 0.5rem;
+            border-bottom: 4px solid #D8BCB0;
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .cabinet-shelf-row::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 5%;
+            width: 90%;
+            height: 2px;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 50%;
+        }
+
+        .shelf-item {
+            cursor: grab;
+            text-align: center;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            padding: 3px;
+        }
+
+        .shelf-item:active { cursor: grabbing; }
+
+        .shelf-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            filter: drop-shadow(0 6px 10px rgba(200, 138, 117, 0.3));
+        }
+
+        .shelf-item img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .shelf-item h5 {
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            color: var(--text-dark);
+            margin-top: 2px;
+        }
+
+        .shelf-item span {
+            font-size: 0.6rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* RIGHT HALF: Interactive Drag Trolley Station */
+        .trolley-station-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: 3px dashed #E2C9BF;
+            border-radius: 20px;
+            padding: 1.8rem 1.2rem;
+            box-shadow: 0 15px 35px rgba(200, 138, 117, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            transition: all 0.35s ease;
+        }
+
+        .trolley-station-box.drag-over {
+            background: rgba(244, 236, 232, 0.95);
+            border-color: var(--primary-color);
+            border-style: solid;
+            box-shadow: 0 0 30px rgba(200, 138, 117, 0.5), inset 0 0 20px rgba(200, 138, 117, 0.2);
+            transform: scale(1.02);
+        }
+
+        .large-trolley-wrapper {
+            width: 110px;
+            height: 110px;
+            background: var(--bg-white);
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(200, 138, 117, 0.3);
+            margin-bottom: 1rem;
+            position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .trolley-station-box.drag-over .large-trolley-wrapper {
+            transform: scale(1.15) rotate(-5deg);
+            background: var(--primary-color);
+        }
+
+        .large-trolley-wrapper svg {
+            width: 55px;
+            height: 55px;
+            fill: var(--primary-color);
+            transition: fill 0.3s ease;
+        }
+
+        .trolley-station-box.drag-over .large-trolley-wrapper svg {
+            fill: #ffffff;
+        }
+
+        .trolley-count-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--primary-color);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border: 2px solid white;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        .trolley-instructions {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .trolley-instructions h4 {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .trolley-instructions p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .trolley-dropped-items {
+            width: 100%;
+            max-height: 140px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .dropped-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--bg-light);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .dropped-item-row span {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .dropped-item-row strong {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+
+        .trolley-station-footer {
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+            padding-top: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trolley-total-price {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .trolley-checkout-btn {
+            padding: 0.6rem 1.4rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .trolley-checkout-btn:hover { background: var(--primary-hover); }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="RB Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="brand-text">RARE <span>BEAUTY</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#" class="icon-link"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="javascript:void(0)" class="icon-link cart-icon" id="open-cart-btn">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="hero" style="padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <h1>Our Skincare & Beauty Collection</h1>
+            <p>Be your Rare, your Beauty, your rules. Drag cabinet items into the shopping trolley!</p>
+        </div>
+    </section>
+
+    <!-- Shop Grid Section with Filter Bar -->
+    <section class="featured-products" style="padding-top: 2rem;">
+        <div class="container">
+            <!-- Category Filter Buttons Bar -->
+            <div class="filter-container">
+                <button class="filter-btn active" onclick="filterProducts('All', this)">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('Face', this)">Face</button>
+                <button class="filter-btn" onclick="filterProducts('Lips', this)">Lips</button>
+                <button class="filter-btn" onclick="filterProducts('Eye Makeup', this)">Eye Makeup</button>
+                <button class="filter-btn" onclick="filterProducts('Skincare', this)">Skincare</button>
+            </div>
+
+            <div class="products-grid" id="shop-grid">
+                <!-- Products Loaded Here Dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Magical Shining Glass Cabinet & Shopping Trolley Station -->
+    <section class="magical-cabinet-section">
+        <div class="container">
+            <div class="section-header" style="margin-bottom: 1.5rem;">
+                <h2>✨ Interactive Vanity Cabinet & Drag Trolley</h2>
+                <p>Open cabinet on left and drag your favorite products directly into the trolley on right!</p>
+            </div>
+
+            <div class="half-split-container">
+                <!-- LEFT HALF: Realistic Shaker Cabinet -->
+                <div class="cabinet-stage" id="cabinet-stage">
+                    <div class="cabinet-open-trigger" onclick="toggleCabinetDoors()">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Open Cabinet
+                    </div>
+
+                    <div class="cabinet-doors-container" onclick="toggleCabinetDoors()">
+                        <div class="cabinet-door door-left"></div>
+                        <div class="cabinet-door door-right"></div>
+                    </div>
+
+                    <div class="cabinet-frame">
+                        <button class="cabinet-close-btn" onclick="toggleCabinetDoors()" title="Close Cabinet">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+
+                        <div class="cabinet-shelves-content">
+                            <!-- Top Shelf -->
+                            <div class="cabinet-shelf-row">
+                                <div class="shelf-item" draggable="true" ondragstart="drag(event, 1)" onclick="addToCart(1)">
+                                    <img src="assets/p1.png" alt="Eye Palette" onerror="this.src='assets/logo.png'">
+                                    <h5>Eye Palette</h5>
+                                    <span>$28.00</span>
+                                </div>
+                                <div class="shelf-item" draggable="true" ondragstart="drag(event, 2)" onclick="addToCart(2)">
+                                    <img src="assets/p2.png" alt="Lip Gloss" onerror="this.src='assets/logo.png'">
+                                    <h5>Lip Gloss</h5>
+                                    <span>$20.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Middle Shelf -->
+                            <div class="cabinet-shelf-row">
+                                <div class="shelf-item" draggable="true" ondragstart="drag(event, 3)" onclick="addToCart(3)">
+                                    <img src="assets/p3.png" alt="Foundation" onerror="this.src='assets/logo.png'">
+                                    <h5>Foundation</h5>
+                                    <span>$30.00</span>
+                                </div>
+                                <div class="shelf-item" draggable="true" ondragstart="drag(event, 4)" onclick="addToCart(4)">
+                                    <img src="assets/p4.png" alt="Face Wash" onerror="this.src='assets/logo.png'">
+                                    <h5>Face Wash</h5>
+                                    <span>$18.00</span>
+                                </div>
+                            </div>
+
+                            <!-- Bottom Shelf -->
+                            <div class="cabinet-shelf-row" style="margin-bottom: 0;">
+                                <div class="shelf-item" draggable="true" ondragstart="drag(event, 5)" onclick="addToCart(5)">
+                                    <img src="assets/p5.png" alt="Highlighter" onerror="this.src='assets/logo.png'">
+                                    <h5>Highlighter</h5>
+                                    <span>$25.00</span>
+                                </div>
+                                <div class="shelf-item" draggable="true" ondragstart="drag(event, 6)" onclick="addToCart(6)">
+                                    <img src="assets/p6.png" alt="Eyeliner" onerror="this.src='assets/logo.png'">
+                                    <h5>Eyeliner</h5>
+                                    <span>$19.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT HALF: Interactive Drag Trolley Station -->
+                <div class="trolley-station-box" id="trolley-station" ondragover="allowDrop(event)" ondragleave="leaveDrop(event)" ondrop="dropToCart(event)">
+                    <div class="large-trolley-wrapper">
+                        <svg viewBox="0 0 576 512">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                        </svg>
+                        <span class="trolley-count-badge" id="trolley-badge">0</span>
+                    </div>
+
+                    <div class="trolley-instructions">
+                        <h4>🛒 Drop Products Here</h4>
+                        <p>Drag products from the left cabinet and drop them inside this trolley box!</p>
+                    </div>
+
+                    <div class="trolley-dropped-items" id="trolley-dropped-list">
+                        <p style="font-size: 0.8rem; color: #a39b96; margin-top: 1rem;">Trolley is currently empty</p>
+                    </div>
+
+                    <div class="trolley-station-footer">
+                        <div class="trolley-total-price">
+                            Total: <span id="trolley-total" style="color: var(--primary-color);">$0.00</span>
+                        </div>
+                        <button class="trolley-checkout-btn" onclick="openCheckout()">Checkout ✨</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Bag Drawer Panel -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Rare Beauty Bag (<span id="drawer-item-count">0</span>)</h3>
+            <button class="close-cart-btn" id="close-cart-btn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="cart-body" id="cart-body">
+            <p class="cart-empty-msg">Your shopping bag is empty ✨</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span id="cart-subtotal-price">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="openCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal Form -->
+    <div class="checkout-modal-overlay" id="checkout-modal">
+        <div class="checkout-modal">
+            <div class="checkout-header">
+                <h3>Complete Your Order ✨</h3>
+                <button class="close-cart-btn" onclick="closeCheckout()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="checkout-form" onsubmit="handlePlaceOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" placeholder="House/Street no, City" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="+92 300 0000000" required>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select required>
+                        <option value="cod">Cash on Delivery (COD)</option>
+                        <option value="card">Credit / Debit Card</option>
+                    </select>
+                </div>
+                <button type="submit" class="place-order-btn">Confirm Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="assets/logo.png" alt="RB Logo" class="logo-img" style="height: 38px;" onerror="this.style.display='none'">
+                    <span class="brand-text" style="color: #fff;">RARE <span style="color: var(--primary-color);">BEAUTY</span></span>
+                </a>
+                <p>A modern beauty brand created to celebrate individuality, confidence, and timeless beauty.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop All</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rare Beauty. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Script with Drag & Drop -->
+    <script>
+        const productsData = [
+            { id: 1, name: "Eye Palette (Blend. Define. Shine)", category: "Eye Makeup", price: 28.00, image: "assets/p1.png" },
+            { id: 2, name: "Nourishing Lip Gloss", category: "Lips", price: 20.00, image: "assets/p2.png" },
+            { id: 3, name: "Second Skin Foundation (30 ML)", category: "Face", price: 30.00, image: "assets/p3.png" },
+            { id: 4, name: "Face Wash Cleanser (100 ML)", category: "Skincare", price: 18.00, image: "assets/p4.png" },
+            { id: 5, name: "Silky Smooth Highlighter", category: "Face", price: 25.00, image: "assets/p5.png" },
+            { id: 6, name: "Precision Eye Liner (3.5 ML)", category: "Eye Makeup", price: 19.00, image: "assets/p6.png" }
+        ];
+
+        let cart = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts(productsData);
+
+            document.getElementById('open-cart-btn').addEventListener('click', toggleCartDrawer);
+            document.getElementById('close-cart-btn').addEventListener('click', toggleCartDrawer);
+            document.getElementById('cart-overlay').addEventListener('click', toggleCartDrawer);
+        });
+
+        function toggleCabinetDoors() {
+            const stage = document.getElementById('cabinet-stage');
+            stage.classList.toggle('opened');
+        }
+
+        /* Drag and Drop Handlers */
+        function drag(event, productId) {
+            event.dataTransfer.setData("text/plain", productId);
+            const trolleyBox = document.getElementById('trolley-station');
+            trolleyBox.classList.add('drag-over');
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function leaveDrop(event) {
+            const trolleyBox = document.getElementById('trolley-station');
+            trolleyBox.classList.remove('drag-over');
+        }
+
+        function dropToCart(event) {
+            event.preventDefault();
+            const productId = event.dataTransfer.getData("text/plain");
+            const trolleyBox = document.getElementById('trolley-station');
+            trolleyBox.classList.remove('drag-over');
+
+            if (productId) {
+                addToCart(parseInt(productId));
+            }
+        }
+
+        function renderProducts(items) {
+            const grid = document.getElementById('shop-grid');
+            if (grid) {
+                grid.innerHTML = items.map(product => `
+                    <div class="product-card">
+                        <img src="${product.image}" alt="${product.name}" class="product-img" onerror="this.src='assets/logo.png'">
+                        <span class="product-category">${product.category}</span>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-price">$${product.price.toFixed(2)}</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function filterProducts(category, btnElement) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            if (category === 'All') {
+                renderProducts(productsData);
+            } else {
+                const filtered = productsData.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cart-drawer').classList.toggle('active');
+            document.getElementById('cart-overlay').classList.toggle('active');
+        }
+
+        function addToCart(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartBody = document.getElementById('cart-body');
+            const cartBadge = document.getElementById('cart-badge');
+            const itemCount = document.getElementById('drawer-item-count');
+            const subtotalEl = document.getElementById('cart-subtotal-price');
+
+            const trolleyBadge = document.getElementById('trolley-badge');
+            const trolleyTotal = document.getElementById('trolley-total');
+            const trolleyList = document.getElementById('trolley-dropped-list');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalItems;
+            itemCount.textContent = totalItems;
+            if (trolleyBadge) trolleyBadge.textContent = totalItems;
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+            if (trolleyTotal) trolleyTotal.textContent = `$${subtotal.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<p class="cart-empty-msg">Your shopping bag is empty ✨</p>';
+                if (trolleyList) trolleyList.innerHTML = '<p style="font-size: 0.8rem; color: #a39b96; margin-top: 1rem;">Trolley is currently empty</p>';
+            } else {
+                cartBody.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img" onerror="this.src='assets/logo.png'">
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                            <div class="cart-item-controls">
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                                <span class="item-qty">${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                        <button class="remove-item-btn" onclick="removeFromCart(${item.id})">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `).join('');
+
+                if (trolleyList) {
+                    trolleyList.innerHTML = cart.map(item => `
+                        <div class="dropped-item-row">
+                            <span>${item.name.split('(')[0]} (x${item.quantity})</span>
+                            <strong>$${(item.price * item.quantity).toFixed(2)}</strong>
+                        </div>
+                    `).join('');
+                }
+            }
+        }
+
+        function openCheckout() {
+            if (cart.length === 0) {
+                alert("Your bag is empty! Add products first ✨");
+                return;
+            }
+            document.getElementById('checkout-modal').classList.add('active');
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.remove('active');
+        }
+
+        function handlePlaceOrder(event) {
+            event.preventDefault();
+            alert("🎉 Order Placed Successfully! Thank you for shopping with Rare Beauty.");
+            cart = [];
+            updateCartUI();
+            closeCheckout();
+        }
+    </script>
+</body>
+</html>

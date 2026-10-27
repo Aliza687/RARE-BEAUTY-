@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Rare Beauty</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo.png" alt="RB Logo" class="logo-img" onerror="this.style.display='none'">
+                <span class="brand-text">RARE <span>BEAUTY</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            <div class="nav-icons">
+                <a href="#" class="icon-link"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="#" class="icon-link cart-icon">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header Banner -->
+    <section class="hero" style="padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Have questions? We would love to hear from you!</p>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section style="padding: 4rem 0;">
+        <div class="container" style="max-width: 700px; background: var(--bg-white); padding: 3rem; border-radius: var(--border-radius); box-shadow: var(--card-shadow);">
+            <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been received by Rare Beauty ✨');">
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Your Name</label>
+                    <input type="text" placeholder="Enter your full name" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body);">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Email Address</label>
+                    <input type="email" placeholder="Enter your email" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body);">
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Message</label>
+                    <textarea rows="5" placeholder="How can we help you?" required style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 6px; font-family: var(--font-body);"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; border: none;">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-col">
+                <a href="index.html" class="logo footer-logo">
+                    <img src="assets/logo.png" alt="RB Logo" class="logo-img" style="height: 38px;" onerror="this.style.display='none'">
+                    <span class="brand-text" style="color: #fff;">RARE <span style="color: var(--primary-color);">BEAUTY</span></span>
+                </a>
+                <p>A modern beauty brand created to celebrate individuality, confidence, and timeless beauty.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop All</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect With Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Rare Beauty. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
